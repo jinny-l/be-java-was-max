@@ -1,7 +1,6 @@
-package model;
+package model.http.request;
 
 import java.util.Map;
-import model.http.request.RequestTarget;
 
 public class RequestLine {
 
