@@ -1,14 +1,17 @@
 package model;
 
+import java.util.Map;
+import model.http.request.RequestTarget;
+
 public class RequestLine {
 
     private final String method;
-    private final String requestTarget;
+    private final RequestTarget requestTarget;
     private final String httpVersion;
 
     public RequestLine(String[] requestLine) {
         method = requestLine[0];
-        requestTarget = requestLine[1];
+        requestTarget = new RequestTarget(requestLine[1]);
         httpVersion = requestLine[2];
     }
 
@@ -16,12 +19,12 @@ public class RequestLine {
         return method;
     }
 
-    public String getRequestTarget() {
-        return requestTarget;
+    public String getPath() {
+        return requestTarget.getPath();
     }
 
-    public String getHttpVersion() {
-        return httpVersion;
+    public Map<String, String> getParams() {
+        return requestTarget.getParams();
     }
 
     @Override
