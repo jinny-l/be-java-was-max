@@ -10,7 +10,8 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import model.RequestLine;
+import model.http.request.HttpRequest;
+import model.http.request.HttpRequestBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,18 +31,11 @@ public class RequestHandler implements Runnable {
         try (InputStream in = connection.getInputStream(); OutputStream out = connection.getOutputStream()) {
             BufferedReader br = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
 
-            // Request Line
-            RequestLine requestLine = new RequestLine(br.readLine().split(" "));
-            logger.debug("request line: {}", requestLine);
-
-            // Request Header
-            String requestHeader;
-            while (!(requestHeader = br.readLine()).equals("")) {
-                logger.debug("header: {}", requestHeader);
-            }
+            HttpRequest httpRequest = HttpRequestBuilder.build(br);
+            logger.debug("Request: {}", httpRequest);
 
             // RequestTarget 출력
-            String requestTarget = requestLine.getRequestTarget();
+            String requestTarget = httpRequest.getPath();
             DataOutputStream dos = new DataOutputStream(out);
             byte[] body = Files.readAllBytes(
                     new File("src/main/resources/templates" + requestTarget).toPath() // TODO: 경로 별도로 추출
