@@ -19,6 +19,10 @@ public class RequestTarget {
         params = parseQueryString(requestTarget);
     }
 
+    public String getUrl() {
+        return url;
+    }
+
     public String getPath() {
         return path;
     }

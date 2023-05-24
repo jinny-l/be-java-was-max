@@ -1,5 +1,7 @@
 package model.http.request;
 
+import java.util.Map;
+
 public class HttpRequest {
 
     private final RequestLine requestLine;
@@ -10,15 +12,21 @@ public class HttpRequest {
         this.requestHeader = requestHeader;
     }
 
-    public String getPath() {
-        return requestLine.getPath();
+    public String getUrl() {
+        return requestLine.getUrl();
+    }
+
+    public Map<String, String> getParams() {
+        return requestLine.getParams();
     }
 
     @Override
     public String toString() {
-        return "HttpRequest{" +
-                "requestLine=" + requestLine +
-                ", requestHeader=" + requestHeader +
-                '}';
+        return "------start-------" +
+                "\nHttpRequest{" +
+                "\nrequestLine=" + requestLine +
+                ", \nrequestHeader=" + requestHeader +
+                '}' +
+                "\n------end-------";
     }
 }

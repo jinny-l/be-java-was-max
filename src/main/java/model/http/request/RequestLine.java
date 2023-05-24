@@ -18,6 +18,10 @@ public class RequestLine {
         return method;
     }
 
+    public String getUrl() {
+        return requestTarget.getUrl();
+    }
+
     public String getPath() {
         return requestTarget.getPath();
     }
