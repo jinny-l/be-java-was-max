@@ -22,7 +22,7 @@ public class HttpRequest {
 
     @Override
     public String toString() {
-        return "------start-------" +
+        return "\n------start-------" +
                 "\nHttpRequest{" +
                 "\nrequestLine=" + requestLine +
                 ", \nrequestHeader=" + requestHeader +

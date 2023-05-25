@@ -10,14 +10,20 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 import model.User;
 import model.http.request.HttpRequest;
 import model.http.request.HttpRequestBuilder;
+import model.http.response.HttpResponse;
+import model.http.response.ResponseHeader;
+import model.http.response.StatusLine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import user.UserController;
 import user.UserService;
+import view.ViewResolver;
 
 public class RequestHandler implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(RequestHandler.class);
@@ -52,25 +58,44 @@ public class RequestHandler implements Runnable {
                 url = "/index.html";
             }
 
-            // RequestTarget 출력
+            // Response 생성
+            HttpResponse httpResponse = new HttpResponse();
+
+            // status line
+            StatusLine statusLine = new StatusLine(200, "OK");
+            httpResponse.setStatusLine(statusLine);
+
+            // View 찾기
+            String view = ViewResolver.getView(Paths.get(url));
+            logger.debug("View: {}", view);
+
+            // body
             DataOutputStream dos = new DataOutputStream(out);
+            logger.debug(Files.readString(Path.of(view)));
             byte[] body = Files.readAllBytes(
-                    new File("src/main/resources/templates" + url).toPath() // TODO: 경로 별도로 추출
+                    new File(view).toPath() // TODO: 경로 별도로 추출
             );
 
-            response200Header(dos, body.length);
+            // header
+            ResponseHeader responseHeader = new ResponseHeader(url, body.length);
+            httpResponse.setResponseHeader(responseHeader);
+
+            response200Header(dos, httpResponse);
             responseBody(dos, body);
+            logger.debug("Response: \n{}", httpResponse);
+
         } catch (IOException e) {
             logger.error(e.getMessage());
         }
     }
 
-    private void response200Header(DataOutputStream dos, int lengthOfBodyContent) {
+    private void response200Header(DataOutputStream dos, HttpResponse httpResponse) {
         try {
-            dos.writeBytes("HTTP/1.1 200 OK \r\n");
-            dos.writeBytes("Content-Type: text/html;charset=utf-8\r\n");
-            dos.writeBytes("Content-Length: " + lengthOfBodyContent + "\r\n");
-            dos.writeBytes("\r\n");
+            dos.writeBytes(httpResponse.toString());
+//            dos.write(body, 0, body.length);
+//            dos.writeBytes("Content-Type: text/html;charset=utf-8\r\n");
+//            dos.writeBytes("Content-Length: " + lengthOfBodyContent + "\r\n");
+//            dos.writeBytes("\r\n");
         } catch (IOException e) {
             logger.error(e.getMessage());
         }
