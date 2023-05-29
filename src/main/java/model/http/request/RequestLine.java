@@ -32,10 +32,6 @@ public class RequestLine {
 
     @Override
     public String toString() {
-        return "RequestLine{" +
-                "method='" + method + '\'' +
-                ", requestTarget='" + requestTarget + '\'' +
-                ", httpVersion='" + httpVersion + '\'' +
-                '}';
+        return method + " " + requestTarget + " " + httpVersion;
     }
 }

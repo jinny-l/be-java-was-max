@@ -51,7 +51,6 @@ public class RequestTarget {
 
     @Override
     public String toString() {
-        return "RequestTarget{" +
-                "url='" + url + '\'';
+        return url;
     }
 }

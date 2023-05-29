@@ -22,8 +22,8 @@ public class RequestHeader {
 
     @Override
     public String toString() {
-        return "RequestHeader{" +
-                "headers=" + headers +
-                '}';
+        StringBuilder stringBuilder = new StringBuilder();
+        headers.forEach((key, value) -> stringBuilder.append(key + ": " + value + "\n"));
+        return stringBuilder.toString().trim();
     }
 }
