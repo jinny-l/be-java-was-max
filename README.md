@@ -1,22 +1,25 @@
-![](https://img.shields.io/badge/VERSION-3.0-green)
-![](https://img.shields.io/badge/LAST_UPDATE-2023--05--29-blue)
+![](https://img.shields.io/badge/VERSION-4.0-green)
+![](https://img.shields.io/badge/LAST_UPDATE-2023--05--30-blue)
 
 # 🌎 자바 웹서버 미션
 - 2023 코드스쿼드 마스터즈 BE max에서 진행한 자바로 웹서버를 구현하는 미션
 - 미션 진행 기간(max 10주차 ~ 13주차): 2023-05-08 ~ 2023-06-02
 
 ## 🔖 버전 기록
-| 버전  | 기능                                       |
-|:----|:-----------------------------------------|
-| 3.0 | 다양한 컨텐츠 타입 지원, HTTP Response 응답 기능       |
-| 2.0 | 회원 가입 기능                                 |
-| 1.0 | 정적 파일 응답 및 logger를 통한 HTTP Request 출력 기능 |
+| 버전  | 기능                                        |
+|:----|:------------------------------------------|
+| 4.0 | POST 방식으로 회원 가입하는 기능, HTTP redirection 기능 |
+| 3.0 | 다양한 컨텐츠 타입 지원, HTTP Response 응답 기능        |
+| 2.0 | GET 방식으로 회원 가입하는 기능                       |
+| 1.0 | 정적 파일 응답 및 logger를 통한 HTTP Request 출력 기능  |
 
 ## ✔️ 기능 요구사항
 - (1.0) 정적 파일 응답 기능
 - (1.0) HTTP Request 내용 출력 기능
 - (2.0) GET 방식으로 회원 가입하는 기능
 - (3.0) 다양한 컨텐츠 타입을 지원하는 기능(css, js, ico, png, jpg 등)
+- (4.0) POST 방식으로 회원 가입하는 기능
+- (4.0) HTTP redirection 기능
 
 ## ⌨️ 프로그래밍 요구사항
 - 단순히 요구사항 구현이 목표가 아니라 프로젝트의 동작 원리에 대해 파악한다.
@@ -29,9 +32,11 @@
 
 ## ✨ 기능 목록
 - [X] (1.0) 정적 파일 응답 및 logger를 통한 HTTP Request 출력 기능
-- [X] (2.0) 회원 가입 기능 
+- [X] (2.0) GET 방식으로 회원 가입하는 기능
   - [X] 홈페이지에서 “회원가입” 메뉴 클릭 시, http://localhost:8080/user/form.html 으로 이동하는 기능
   - [X] URL에서 파라미터를 파싱하는 기능
   - [X] 회원 가입하는 기능
 - [X] (3.0) 다양한 컨텐츠 타입을 지원하는 기능
   - [X] HttpResponse, HttpResponseHeader, StatusLine, ContentType 클래스 구현
+- [ ] (4.0) POST 방식으로 회원 가입하는 기능
+  - [ ] 가입 완료 후 특정 페이지로 리다이렉트하는 기능
