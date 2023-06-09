@@ -1,15 +1,18 @@
 package model.http.request;
 
 import java.util.Map;
+import model.http.Header;
 
 public class HttpRequest {
 
     private final RequestLine requestLine;
-    private final RequestHeader requestHeader;
+    private final Header header;
+    private final RequestBody requestBody;
 
-    public HttpRequest(RequestLine requestLine, RequestHeader requestHeader) {
+    public HttpRequest(RequestLine requestLine, Header header, RequestBody requestBody) {
         this.requestLine = requestLine;
-        this.requestHeader = requestHeader;
+        this.header = header;
+        this.requestBody = requestBody;
     }
 
     public String getUrl() {
@@ -20,11 +23,17 @@ public class HttpRequest {
         return requestLine.getParams();
     }
 
+    public String getMethod() {
+        return requestLine.getMethod();
+    }
+
     @Override
     public String toString() {
         return "\n------start-------"
                 + "\n" + requestLine
-                + "\n" + requestHeader
+                + "\n" + header
+                + "\n"
+                + "\n" + requestBody
                 + "\n------end-------";
     }
 }
