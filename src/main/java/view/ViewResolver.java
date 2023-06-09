@@ -1,5 +1,6 @@
 package view;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -13,10 +14,10 @@ public class ViewResolver {
         if (hasFileInDefaultPathOf(path)) {
             return DEFAULT_PATH + path;
         }
-        return SECOND_PATH + path;
+        return Files.readAllBytes(Path.of(SECOND_PATH + view));
     }
 
-    private static boolean hasFileInDefaultPathOf(Path path) {
-        return Files.exists(Path.of(DEFAULT_PATH + path));
+    private static boolean hasFileInDefaultPathOf(String view) {
+        return Files.exists(Path.of(DEFAULT_PATH + view));
     }
 }
