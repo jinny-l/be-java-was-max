@@ -24,7 +24,7 @@ public class Header {
     }
 
     public int getContentLength() {
-        return Integer.parseInt(headers.getOrDefault("ContentLength", List.of("0")).get(0)); // TODO: flatMap으로 어떻게 안되나,, 흠
+        return Integer.parseInt(headers.getOrDefault("Content-Length", List.of("0")).get(0)); // TODO: flatMap으로 어떻게 안되나,, 흠
     }
 
     private void parseRequestHeader(List<String> requestHeaders) {
