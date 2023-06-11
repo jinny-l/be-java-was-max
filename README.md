@@ -1,9 +1,9 @@
 ![](https://img.shields.io/badge/VERSION-4.0-green)
-![](https://img.shields.io/badge/LAST_UPDATE-2023--05--30-blue)
+![](https://img.shields.io/badge/LAST_UPDATE-2023--06--12-blue)
 
 # 🌎 자바 웹서버 미션
 - 2023 코드스쿼드 마스터즈 BE max에서 진행한 자바로 웹서버를 구현하는 미션
-- 미션 진행 기간(max 10주차 ~ 13주차): 2023-05-08 ~ 2023-06-02
+- 미션 진행 기간(max 10주차 ~ 13주차): 2023-05-08 ~ 2023-06-11
 
 ## 🔖 버전 기록
 | 버전  | 기능                                        |
@@ -38,5 +38,8 @@
   - [X] 회원 가입하는 기능
 - [X] (3.0) 다양한 컨텐츠 타입을 지원하는 기능
   - [X] HttpResponse, HttpResponseHeader, StatusLine, ContentType 클래스 구현
-- [ ] (4.0) POST 방식으로 회원 가입하는 기능
-  - [ ] 가입 완료 후 특정 페이지로 리다이렉트하는 기능
+- [X] (4.0) POST 방식으로 회원 가입하는 기능
+  - [X] POST method 지원을 위한 RequestBody 구현
+  - [X] URL 분기 처리를 위한 RequestMapping 어노테이션 기능
+  - [X] URL에 따라 매핑되는 서블릿을 불러오는 기능
+  - [X] 가입 완료 후 특정 페이지로 리다이렉트하는 기능
