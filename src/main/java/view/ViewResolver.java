@@ -10,9 +10,10 @@ public class ViewResolver {
     private static final String DEFAULT_PATH = CLASS_PATH + "templates";
     private static final String SECOND_PATH = CLASS_PATH + "static"; // TODO: 실제 명칭 확인 필요
 
-    public static String getViewFrom(Path path) {
-        if (hasFileInDefaultPathOf(path)) {
-            return DEFAULT_PATH + path;
+    public static byte[] getView(String view) throws IOException {
+        if (hasFileInDefaultPathOf(view)) {
+            return Files.readAllBytes(Path.of(DEFAULT_PATH + view));
+
         }
         return Files.readAllBytes(Path.of(SECOND_PATH + view));
     }
