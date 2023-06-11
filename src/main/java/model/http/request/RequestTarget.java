@@ -8,6 +8,7 @@ public class RequestTarget {
 
     private static final String QUERY_STRING_DELIMITER = "?";
     private static final int URL_INDEX = 0;
+    private static final int PARAMS_INDEX = 1;
 
     private final String url;
     private final String path;
@@ -40,7 +41,7 @@ public class RequestTarget {
 
     private Map<String, String> parseQueryString(String requestTarget) {
         if (hasQueryString(requestTarget)) {
-            return HttpRequestUtils.parseQueryParams(requestTarget);
+            return HttpRequestUtils.parseQueryParams(requestTarget.split("\\?")[PARAMS_INDEX]);
         }
         return Collections.emptyMap();
     }

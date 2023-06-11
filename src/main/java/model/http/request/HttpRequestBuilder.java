@@ -27,9 +27,13 @@ public class HttpRequestBuilder {
     }
 
     private static RequestBody parseRequestBody(BufferedReader br, int contentLength) throws IOException {
+        if (contentLength == 0) {
+            return new RequestBody();
+        }
+
         StringBuilder body = new StringBuilder();
         for (int i = 0; i < contentLength; i++) {
-            body.append(br.read());
+            body.append((char) br.read());
         }
         return new RequestBody(body.toString());
     }

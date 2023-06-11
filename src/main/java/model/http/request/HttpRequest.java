@@ -20,7 +20,11 @@ public class HttpRequest {
     }
 
     public Map<String, String> getParams() {
-        return requestLine.getParams();
+        Map<String, String> paramsOfGet = requestLine.getParams();
+        if (paramsOfGet.isEmpty()) { // 쿼리 스트링에 파라미터가 없을 때 바디에 파라미터 반환
+            return requestBody.getParams();
+        }
+        return paramsOfGet; // 쿼리 스트링에 파라미터가 있을 때 해당 파라미터 반환
     }
 
     public String getMethod() {
