@@ -1,20 +1,23 @@
 package model.http.response;
 
+import model.http.Header;
+
 public class HttpResponse {
 
     private StatusLine statusLine;
-    private ResponseHeader responseHeader;
+    private Header header;
     private byte[] body;
 
     public HttpResponse() {
+        this.header = new Header();
     }
 
     public void setStatusLine(StatusLine statusLine) {
         this.statusLine = statusLine;
     }
 
-    public void setResponseHeader(ResponseHeader responseHeader) {
-        this.responseHeader = responseHeader;
+    public void setHeader(Header header) {
+        this.header = header;
     }
 
     public void setBody(byte[] body) {
@@ -25,8 +28,8 @@ public class HttpResponse {
         return statusLine;
     }
 
-    public ResponseHeader getResponseHeader() {
-        return responseHeader;
+    public Header getHeader() {
+        return header;
     }
 
     public byte[] getBody() {
@@ -37,7 +40,7 @@ public class HttpResponse {
     public String toString() {
         return "\n------start-------"
                 + "\n" + statusLine
-                + "\n" + responseHeader
+                + "\n" + header
                 + "\n------end-------";
     }
 }
