@@ -35,7 +35,7 @@ public class HttpServlet {
         response.setBody(view);
     }
 
-    protected void doPost(HttpRequest request, HttpResponse response) {
+    protected void doPost(HttpRequest request, HttpResponse response) throws IOException {
     }
 
 }
