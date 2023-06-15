@@ -1,13 +1,14 @@
-![](https://img.shields.io/badge/VERSION-4.0-green)
-![](https://img.shields.io/badge/LAST_UPDATE-2023--06--12-blue)
+![](https://img.shields.io/badge/VERSION-5.0-green)
+![](https://img.shields.io/badge/LAST_UPDATE-2023--06--15-blue)
 
 # 🌎 자바 웹서버 미션
 - 2023 코드스쿼드 마스터즈 BE max에서 진행한 자바로 웹서버를 구현하는 미션
-- 미션 진행 기간(max 10주차 ~ 13주차): 2023-05-08 ~ 2023-06-11
+- 미션 진행 기간(max 10주차 ~ 13주차): 2023-05-08 ~ 2023-06-15
 
 ## 🔖 버전 기록
 | 버전  | 기능                                        |
 |:----|:------------------------------------------|
+| 5.0 | 로그인 기능                                    |
 | 4.0 | POST 방식으로 회원 가입하는 기능, HTTP redirection 기능 |
 | 3.0 | 다양한 컨텐츠 타입 지원, HTTP Response 응답 기능        |
 | 2.0 | GET 방식으로 회원 가입하는 기능                       |
@@ -43,3 +44,6 @@
   - [X] URL 분기 처리를 위한 RequestMapping 어노테이션 기능
   - [X] URL에 따라 매핑되는 서블릿을 불러오는 기능
   - [X] 가입 완료 후 특정 페이지로 리다이렉트하는 기능
+- [ ] (5.0) 로그인 기능
+  - [ ] 로그인이 성공할 경우, HTTP 헤더의 쿠키 값을 SID=세션 ID 로 응답하는 기능
+  - [ ] 로그인이 성공하면 index.html로 이동하고, 실패하면 /user/login_failed.html로 이동하는 기능
